@@ -1,8 +1,8 @@
 
-all: payload-1100.bin payload-1100-2gb.bin payload-1100-3gb.bin payload-1100-4gb.bin
+all: payload-1000.bin payload-1000-2gb.bin payload-1000-3gb.bin payload-1000-4gb.bin
 
 clean:
-	rm -f payload-1100.elf payload-1100.bin payload-1100-2gb.elf payload-1100-2gb.bin payload-1100-3gb.elf payload-1100-3gb.bin payload-1100-4gb.elf payload-1100-4gb.bin; 
+	rm -f payload-1000.elf payload-1000.bin payload-1000-2gb.elf payload-1000-2gb.bin payload-1000-3gb.elf payload-1000-3gb.bin payload-1000-4gb.elf payload-1000-4gb.bin; 
 	cd ps4-kexec; make clean
 	cd ../lib/; make clean
     
@@ -13,17 +13,17 @@ clean:
 ps4-kexec/kexec.bin:
 	cd ps4-kexec; make
 
-payload-1100.elf: ../lib/lib.a main.c ps4-kexec/kexec.bin
-	gcc -isystem ../freebsd-headers -nostdinc -nostdlib -fno-stack-protector -static ../lib/lib.a -D__11_00__ -DPS4_11_00 main.c -Wl,-gc-sections -o payload-1100.elf -fPIE -ffreestanding
+payload-1000.elf: ../lib/lib.a main.c ps4-kexec/kexec.bin
+	gcc -isystem ../freebsd-headers -nostdinc -nostdlib -fno-stack-protector -static ../lib/lib.a -D__10_00__ -DPS4_10_00 main.c -Wl,-gc-sections -o payload-1000.elf -fPIE -ffreestanding
 
-payload-1100-2gb.elf: ../lib/lib.a main.c ps4-kexec/kexec.bin
-	 gcc -isystem ../freebsd-headers -nostdinc -nostdlib -fno-stack-protector -static ../lib/lib.a -D__11_00__ -DPS4_11_00 -DVRAM_GB_DEFAULT=2 main.c -Wl,-gc-sections -o payload-1100-2gb.elf -fPIE -ffreestanding
+payload-1000-2gb.elf: ../lib/lib.a main.c ps4-kexec/kexec.bin
+	 gcc -isystem ../freebsd-headers -nostdinc -nostdlib -fno-stack-protector -static ../lib/lib.a -D__10_00__ -DPS4_10_00 -DVRAM_GB_DEFAULT=2 main.c -Wl,-gc-sections -o payload-1000-2gb.elf -fPIE -ffreestanding
 
-payload-1100-3gb.elf: ../lib/lib.a main.c ps4-kexec/kexec.bin
-	gcc -isystem ../freebsd-headers -nostdinc -nostdlib -fno-stack-protector -static ../lib/lib.a -D__11_00__ -DPS4_11_00 -DVRAM_GB_DEFAULT=3 main.c -Wl,-gc-sections -o payload-1100-3gb.elf -fPIE -ffreestanding
+payload-1000-3gb.elf: ../lib/lib.a main.c ps4-kexec/kexec.bin
+	gcc -isystem ../freebsd-headers -nostdinc -nostdlib -fno-stack-protector -static ../lib/lib.a -D__10_00__ -DPS4_10_00 -DVRAM_GB_DEFAULT=3 main.c -Wl,-gc-sections -o payload-1000-3gb.elf -fPIE -ffreestanding
 
-payload-1100-4gb.elf: ../lib/lib.a main.c ps4-kexec/kexec.bin
-	gcc -isystem ../freebsd-headers -nostdinc -nostdlib -fno-stack-protector -static ../lib/lib.a -D__11_00__ -DPS4_11_00 -DVRAM_GB_DEFAULT=4 main.c -Wl,-gc-sections -o payload-1100-4gb.elf -fPIE -ffreestanding
+payload-1000-4gb.elf: ../lib/lib.a main.c ps4-kexec/kexec.bin
+	gcc -isystem ../freebsd-headers -nostdinc -nostdlib -fno-stack-protector -static ../lib/lib.a -D__10_00__ -DPS4_10_00 -DVRAM_GB_DEFAULT=4 main.c -Wl,-gc-sections -o payload-1000-4gb.elf -fPIE -ffreestanding
 
 
 %.bin: %.elf

@@ -8,7 +8,7 @@
 #include <time.h>
 #include <ps4-offsets/kernel.h>
 
-#if defined(__11_00__)
+#if defined(__10_00__)
 asm("ps4kexec:\n.incbin \"ps4-kexec/kexec.bin\"\nps4kexec_end:\n");
 #include "ps4-kexec/magic.h"
 #else
