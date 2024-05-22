@@ -1,7 +1,7 @@
 #include <sys/types.h>
 #include <stddef.h>
 #include <unistd.h>
-#include <fcntl.h>
+#include <sys/fcntl.h>
 #include <sys/mman.h>
 #include <signal.h>
 #include <sys/thr.h>
@@ -9,8 +9,8 @@
 #include <ps4-offsets/kernel.h>
 
 #if defined(__11_00__)
-asm("ps4kexec:\n.incbin \"ps4-kexec-1100/kexec.bin\"\nps4kexec_end:\n");
-#include "ps4-kexec-1100/magic.h"
+asm("ps4kexec:\n.incbin \"ps4-kexec/kexec.bin\"\nps4kexec_end:\n");
+#include "ps4-kexec/magic.h"
 #else
 #error "unsupported firmware"
 #endif
