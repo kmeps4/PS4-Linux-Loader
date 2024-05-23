@@ -1,5 +1,5 @@
-#ifdef __10_00__
-#include "1000.h"
+#ifdef __9_60__
+#include "960.h"
 #elif
 #error "unsupported firmware"
 #endif
